@@ -3,12 +3,12 @@ node_modules
 /dist
 /gzFront
 /prod-server
-/helpers
-db.js
-/views
-/routes/email.js
-/routes/news.js
-/routes/results.js
+helpers
+config/db.js
+views
+routes/email.js
+routes/news.js
+routes/results.js
 
 # local env files
 .env.local
