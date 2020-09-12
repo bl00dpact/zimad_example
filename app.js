@@ -9,6 +9,7 @@ const exphbs = require('express-handlebars');
 
 
 mongoose.promise = global.Promise;
+//middlewares
 app.use(morgan('dev'));
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -19,11 +20,9 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 
-
-
 //passport
 app.use(passport.initialize());
-// app.use(passport.session());
+
 //routes
 const links = require('./routes/links');
 const users = require('./routes/users');

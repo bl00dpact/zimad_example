@@ -8,6 +8,7 @@ const passport = require('passport');
 require('../models/User');
 const User = mongoose.model('users');
 
+//login request
 router.post("/login", (req, res, next) => {
     passport.authenticate('local', {session: false}, (err, user, info) => {
         if (err) {
@@ -26,9 +27,11 @@ router.post("/login", (req, res, next) => {
         })
     })(req, res, next)
 })
+
 router.get('/register', (req, res)=>{
     res.render('users/register')
 });
+//register request
 router.post('/register', (req, res)=>{
     let errors =[];
     if (req.body.password !== req.body.password2) {

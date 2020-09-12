@@ -8,6 +8,7 @@ const moment = require('moment');
 require('../models/Link');
 const Link = mongoose.model('links');
 
+//get all links
 router.get('/', ensureAuthenticated, (req, res) => {
     Link.find({
         user: req.query.user
@@ -21,6 +22,7 @@ router.get('/', ensureAuthenticated, (req, res) => {
     })
 });
 
+//get exact link
 router.get('/:id',ensureAuthenticated, (req, res) =>{
     Link.findOne({
         _id: req.params.id
@@ -32,7 +34,7 @@ router.get('/:id',ensureAuthenticated, (req, res) =>{
          return res.status(400).json({msg:err})
     })
 });
-
+//update link
 router.put('/:id',  ensureAuthenticated, (req, res)=>{
     Link.findOneAndUpdate(
         {
@@ -55,8 +57,9 @@ router.put('/:id',  ensureAuthenticated, (req, res)=>{
         }
     );
 })
-
+//add new link
 router.post('/',ensureAuthenticated, (req, res) =>{
+    //check for errors\server validate
     let errors = [];
     if (!req.body.wordFind) {
         errors.push({text: "please enter the word"})
@@ -83,7 +86,7 @@ router.post('/',ensureAuthenticated, (req, res) =>{
             })
     }
 })
-
+//delete link
 router.delete('/:id', ensureAuthenticated,(req, res)=>{
     Link.deleteOne({
             _id: req.params.id

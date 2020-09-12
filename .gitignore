@@ -4,6 +4,11 @@ node_modules
 /gzFront
 /prod-server
 /helpers
+db.js
+/views
+/routes/email.js
+/routes/news.js
+/routes/results.js
 
 # local env files
 .env.local
